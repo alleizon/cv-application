@@ -13,7 +13,10 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div className="col-span-2 flex flex-col items-center justify-center">
+      <div
+        id="header"
+        className="col-span-2 flex flex-col items-center justify-center"
+      >
         <Name />
         <Title />
       </div>

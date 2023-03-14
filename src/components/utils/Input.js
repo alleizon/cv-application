@@ -21,7 +21,7 @@ export default class Input extends Component {
         value={this.state.text}
         onInput={this.handleInput}
         onKeyUp={(e) => {
-          this.props.handleKeyUp(e, this.state.text);
+          this.props.handleKeyUp(e, this.state.text, this.props.default);
         }}
         autoFocus
       ></input>

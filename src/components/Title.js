@@ -1,33 +1,27 @@
 import { Component } from "react";
 import Input from "./utils/Input";
+import { handleClick, handleKeyUp } from "./utils/fieldHandlers";
 
 export default class Title extends Component {
   constructor() {
     super();
     this.state = {
       showInput: false,
-      title: "Your title here",
+      value: "Your title here",
     };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-  }
-
-  handleKeyUp(e, text) {
-    if (e.key !== "Enter") return;
-    this.setState({ showInput: false, title: text ? text : "Your title here" });
-  }
-
-  handleClick() {
-    this.setState({
-      showInput: true,
-    });
+    this.handleClick = handleClick.bind(this);
+    this.handleKeyUp = handleKeyUp.bind(this);
   }
 
   render() {
     return this.state.showInput ? (
-      <Input value={this.state.title} handleKeyUp={this.handleKeyUp} />
+      <Input
+        value={this.state.value}
+        default="Your title here"
+        handleKeyUp={this.handleKeyUp}
+      />
     ) : (
-      <p onClick={this.handleClick}>{this.state.title}</p>
+      <p onClick={this.handleClick}>{this.state.value}</p>
     );
   }
 }
