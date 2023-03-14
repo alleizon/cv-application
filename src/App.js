@@ -5,5 +5,7 @@ export default class App extends Component {
     super(props);
   }
 
-  render() {}
+  render() {
+    return <h1 className="text-3xl font-bold underline">Stigma</h1>;
+  }
 }
