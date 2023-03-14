@@ -6,7 +6,7 @@ import BodyRight from "./components/BodyRight";
 export default class App extends Component {
   render() {
     return (
-      <div className="container grid h-screen grid-cols-body grid-rows-body">
+      <div className="grid h-screen grid-cols-body grid-rows-body">
         <Header />
         <BodyLeft />
         <BodyRight />
