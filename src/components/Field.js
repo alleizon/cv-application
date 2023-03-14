@@ -1,4 +1,6 @@
 import { Component } from "react";
+import Input from "./utils/Input";
+import { handleClick, handleKeyUp } from "./utils/fieldHandlers";
 
 export default class Field extends Component {
   constructor(props) {
@@ -6,15 +8,27 @@ export default class Field extends Component {
     this.state = {
       value: this.props.value,
       icon: this.props.icon,
+      showInput: false,
     };
     this.default = this.props.value;
+    this.handleClick = handleClick.bind(this);
+    this.handleKeyUp = handleKeyUp.bind(this);
   }
 
   render() {
-    console.log(this.state);
     const { value, icon } = this.state;
-    return (
+
+    return this.state.showInput ? (
       <span>
+        {icon}
+        <Input
+          value={this.state.value}
+          default={this.default}
+          handleKeyUp={this.handleKeyUp}
+        />
+      </span>
+    ) : (
+      <span onClick={this.handleClick}>
         {icon} {value}
       </span>
     );
