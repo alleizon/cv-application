@@ -1,6 +1,6 @@
 import { Component } from "react";
-import Input from "./utils/Input";
-import { handleClick, handleKeyUp } from "./utils/fieldHandlers";
+import Input from "../../utils/Input";
+import { handleClick, handleKeyUp } from "../../utils/fieldHandlers";
 
 export default class Field extends Component {
   constructor(props) {

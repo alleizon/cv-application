@@ -1,7 +1,7 @@
 import { Component } from "react";
-import Header from "./components/Header";
-import BodyLeft from "./components/BodyLeft";
-import BodyRight from "./components/BodyRight";
+import Header from "./components/Header/Header";
+import BodyLeft from "./components/BodyLeft/BodyLeft";
+import BodyRight from "./components/BodyRight/BodyRight";
 import styled from "styled-components";
 
 export default class App extends Component {

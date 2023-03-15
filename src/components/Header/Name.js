@@ -1,13 +1,13 @@
 import { Component } from "react";
-import Input from "./utils/Input";
-import { handleClick, handleKeyUp } from "./utils/fieldHandlers";
+import Input from "../utils/Input";
+import { handleClick, handleKeyUp } from "../utils/fieldHandlers";
 
-export default class Title extends Component {
+export default class Name extends Component {
   constructor() {
     super();
     this.state = {
       showInput: false,
-      value: "Your title here",
+      value: "Your name here",
     };
     this.handleClick = handleClick.bind(this);
     this.handleKeyUp = handleKeyUp.bind(this);
@@ -17,11 +17,11 @@ export default class Title extends Component {
     return this.state.showInput ? (
       <Input
         value={this.state.value}
-        default="Your title here"
+        default="Your name here"
         handleKeyUp={this.handleKeyUp}
       />
     ) : (
-      <p onClick={this.handleClick}>{this.state.value}</p>
+      <h1 onClick={this.handleClick}>{this.state.value}</h1>
     );
   }
 }

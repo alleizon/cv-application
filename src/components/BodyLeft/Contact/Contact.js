@@ -1,5 +1,5 @@
 import { Component } from "react";
-import fields from "./utils/contactFields";
+import fields from "../../utils/contactFields";
 import Field from "./ContactField";
 import styled from "styled-components";
 
