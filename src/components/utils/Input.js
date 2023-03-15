@@ -16,7 +16,7 @@ export default class Input extends Component {
   render() {
     return (
       <input
-        className="border border-black"
+        className=""
         type="text"
         value={this.state.text}
         onInput={this.handleInput}

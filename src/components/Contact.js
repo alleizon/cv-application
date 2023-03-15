@@ -1,6 +1,7 @@
 import { Component } from "react";
 import fields from "./utils/contactFields";
-import Field from "./Field";
+import Field from "./ContactField";
+import styled from "styled-components";
 
 export default class Contact extends Component {
   constructor() {
@@ -10,12 +11,18 @@ export default class Contact extends Component {
 
   render() {
     return (
-      <div id="contact" className="flex flex-col">
+      <ContactS id="contact">
         <Field {...this.state.address} />
         <Field {...this.state.phone} />
         <Field {...this.state.email} />
         <Field {...this.state.linkedIn} />
-      </div>
+      </ContactS>
     );
   }
 }
+
+const ContactS = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Component } from "react";
 import Name from "./Name";
 import Title from "./Title";
@@ -13,13 +14,19 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div
-        id="header"
-        className="col-span-2 flex flex-col items-center justify-center"
-      >
+      <HeaderS id="header">
         <Name />
         <Title />
-      </div>
+      </HeaderS>
     );
   }
 }
+
+const HeaderS = styled.div`
+  grid-row: 1 / 1;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
