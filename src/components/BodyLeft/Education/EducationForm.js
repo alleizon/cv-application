@@ -1,5 +1,6 @@
 import { Component } from "react";
 import styled from "styled-components";
+import Input from "./Input";
 
 export default class EducationForm extends Component {
   constructor() {
@@ -25,48 +26,67 @@ export default class EducationForm extends Component {
   handleSubmit(e) {
     const { handleSubmit } = this.props;
     e.preventDefault();
-    console.log(e.nativeEvent);
+    if (e.target.checkValidity()) handleSubmit(this.state);
   }
 
   render() {
     return (
-      <FormS onSubmit={this.handleSubmit}>
-        <LabelS>Degree title</LabelS>
-        <InputS
+      <FormS
+        action="/
+      "
+        method="post"
+        noValidate
+        onSubmit={this.handleSubmit}
+      >
+        <LabelS htmlFor="title">
+          Degree title{" "}
+          <span style={{ fontWeight: 600 }} aria-required>
+            *
+          </span>
+        </LabelS>
+        <Input
           id="title"
+          type="text"
+          required={true}
           value={this.state.title}
-          onInput={this.handleInput}
-          placeholder="e.g.: Bachelor of Science"
-          required
-        ></InputS>
+          handleInput={this.handleInput}
+        />
 
-        <LabelS>University / College</LabelS>
-        <InputS
+        <LabelS htmlFor="school">
+          University / College{" "}
+          <span style={{ fontWeight: 600 }} aria-required>
+            *
+          </span>
+        </LabelS>
+        <Input
           id="school"
+          type="text"
+          required={true}
           value={this.state.school}
-          onInput={this.handleInput}
-          placeholder="e.g.: Harvard University"
-          required
-        ></InputS>
+          handleInput={this.handleInput}
+        />
 
         <WrapperS>
-          <LabelS>From:</LabelS>
-          <InputS
+          <LabelS htmlFor="from">
+            From:{" "}
+            <span style={{ fontWeight: 600 }} aria-required>
+              *
+            </span>
+          </LabelS>
+          <Input
             id="from"
+            type="number"
+            required={true}
             value={this.state.from}
-            onInput={this.handleInput}
-            placeholder="2012"
-            type="number"
-            required
-          ></InputS>
-          <LabelS>To:</LabelS>
-          <InputS
+            handleInput={this.handleInput}
+          />
+          <LabelS htmlFor="to">To:</LabelS>
+          <Input
             id="to"
-            value={this.state.to}
-            onInput={this.handleInput}
-            placeholder="2016"
             type="number"
-          ></InputS>
+            value={this.state.to}
+            handleInput={this.handleInput}
+          />
         </WrapperS>
 
         <ButtonS>Add</ButtonS>
@@ -80,8 +100,6 @@ const FormS = styled.form`
   flex-direction: column;
   gap: 10px;
 `;
-
-const InputS = styled.input``;
 
 const ButtonS = styled.button``;
 
