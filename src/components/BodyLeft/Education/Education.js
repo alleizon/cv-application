@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import EducationField from "./EducationField";
 import EducationForm from "./EducationForm";
 
@@ -9,23 +9,28 @@ export default class Education extends Component {
       entries: [],
       showForm: false,
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleFormClick = this.handleFormClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.newKey = this.getKey();
   }
 
-  handleClick() {
+  getKey() {
+    let id = 0;
+    return () => (id += 1);
+  }
+
+  handleFormClick() {
     this.setState({ showForm: true });
   }
 
   handleSubmit(obj) {
-    const newEntry = {};
-    for (let key in obj) {
-      newEntry[key] = obj[key] === "" ? null : obj[key];
-    }
-    this.setState({
-      entries: this.state.entries.concat(newEntry),
-      showForm: false,
-    });
+    const entry = {
+      id: this.newKey(),
+      component: <EducationField {...obj} />,
+    };
+    const copy = this.state.entries.slice();
+    copy.push(entry);
+    this.setState({ entries: copy, showForm: false });
   }
 
   render() {
@@ -33,13 +38,13 @@ export default class Education extends Component {
     return (
       <div>
         <h1>Education</h1>
-        {this.state.entries.map((entry) => (
-          <EducationField />
+        {this.state.entries.map((item) => (
+          <Fragment key={item.id}>{item.component}</Fragment>
         ))}
         {this.state.showForm ? (
           <EducationForm handleSubmit={this.handleSubmit} />
         ) : (
-          <button onClick={this.handleClick}>Add</button>
+          <button onClick={this.handleFormClick}>Add</button>
         )}
       </div>
     );

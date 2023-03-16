@@ -16,12 +16,13 @@ export default class Input extends Component {
   render() {
     return (
       <input
-        className=""
         type="text"
+        data-field={this.props.id}
         value={this.state.text}
         onInput={this.handleInput}
         onKeyUp={(e) => {
-          this.props.handleKeyUp(e, this.state.text, this.props.default);
+          if (e.key !== "Enter") return;
+          this.props.handleKeyUp(e, this.state.text);
         }}
         autoFocus
       ></input>

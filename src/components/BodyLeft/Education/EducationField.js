@@ -1,11 +1,73 @@
 import { Component } from "react";
+import Input from "../../Input";
 
 export default class EducationField extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: {
+        value: this.props.title,
+        input: false,
+      },
+      school: {
+        value: this.props.school,
+        input: false,
+      },
+      from: {
+        value: this.props.from,
+        input: false,
+      },
+      to: {
+        value: this.props.to,
+        input: false,
+      },
+    };
+    this.handleFieldClick = this.handleFieldClick.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+  }
+
+  handleFieldClick(key, value) {
+    const obj = { ...this.state[key] };
+    obj.input = !obj.input;
+    if (value) obj.value = value;
+    this.setState({
+      [key]: obj,
+    });
+  }
+
+  handleKeyUp(e, value) {
+    const key = e.target.dataset.field;
+    if (value === "")
+      this.setState({ [key]: { value: this.state[key].value, input: false } });
+    else this.setState({ [key]: { value: value, input: false } });
   }
 
   render() {
-    return <div></div>;
+    const entries = Object.entries(this.state);
+    return (
+      <div data-field-index={this.props.index}>
+        {entries.map((entry, index) => {
+          const [key, obj] = entry;
+          const [value, isInput] = Object.values(obj);
+          return isInput ? (
+            <Input
+              id={key}
+              value={value}
+              key={index + 4}
+              handleKeyUp={this.handleKeyUp}
+            />
+          ) : (
+            <p
+              key={index}
+              onClick={() => {
+                this.handleFieldClick(key);
+              }}
+            >
+              {value}
+            </p>
+          );
+        })}
+      </div>
+    );
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Input from "../../utils/Input";
+import Input from "../../Input";
 import { handleClick, handleKeyUp } from "../../utils/fieldHandlers";
 
 export default class Field extends Component {
