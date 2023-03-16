@@ -2,6 +2,7 @@ import { Component } from "react";
 import styled from "styled-components";
 import { ButtonS } from "../Education/EducationForm";
 import SkillsForm from "./SkillsForm";
+import SkillsList from "./SkillsList";
 
 export default class Skills extends Component {
   constructor() {
@@ -13,6 +14,7 @@ export default class Skills extends Component {
     this.toggleForm = this.toggleForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeSkill = this.removeSkill.bind(this);
+    this.editSkill = this.editSkill.bind(this);
     this.newKey = this.initKey();
   }
 
@@ -26,6 +28,20 @@ export default class Skills extends Component {
     this.setState({
       skills: copy,
     });
+  }
+
+  editSkill(e) {
+    const value = e.target.value;
+    const id = +e.target.dataset.id;
+    const target = this.state.skills.findIndex((skill) => skill.id === id);
+    const copy = this.state.skills.slice();
+    if (value === "") {
+      copy.splice(target, 1);
+      this.setState({ skills: copy });
+      return;
+    }
+    copy[target].value = value;
+    this.setState({ skills: copy });
   }
 
   initKey() {
@@ -54,12 +70,13 @@ export default class Skills extends Component {
         <h1>Skills</h1>
         <ul>
           {this.state.skills.map((skill) => (
-            <LiS key={skill.id} data-id={skill.id}>
-              {skill.value}
-              <ButtonAbsS onClick={this.removeSkill}>
-                <i className="fa-solid fa-xmark"></i>
-              </ButtonAbsS>
-            </LiS>
+            <SkillsList
+              key={skill.id}
+              removeSkill={this.removeSkill}
+              editSkill={this.editSkill}
+              value={skill.value}
+              id={skill.id}
+            />
           ))}
         </ul>
 
@@ -79,11 +96,3 @@ export default class Skills extends Component {
 }
 
 const DivS = styled.div``;
-
-const LiS = styled.li`
-  position: relative;
-`;
-
-const ButtonAbsS = styled.button`
-  position: absolute;
-`;
