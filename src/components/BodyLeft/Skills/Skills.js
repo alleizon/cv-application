@@ -66,7 +66,7 @@ export default class Skills extends Component {
 
   render() {
     return (
-      <DivS>
+      <DivS id="skills">
         <h1>Skills</h1>
         <ul>
           {this.state.skills.map((skill) => (
@@ -95,4 +95,7 @@ export default class Skills extends Component {
   }
 }
 
-const DivS = styled.div``;
+const DivS = styled.div`
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
+`;

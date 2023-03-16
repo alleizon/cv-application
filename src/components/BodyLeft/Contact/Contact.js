@@ -25,4 +25,6 @@ const ContactS = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
 `;

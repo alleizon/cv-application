@@ -1,4 +1,5 @@
 import { Component, Fragment } from "react";
+import styled from "styled-components";
 import EducationField from "./EducationField";
 import EducationForm from "./EducationForm";
 
@@ -49,7 +50,7 @@ export default class Education extends Component {
 
   render() {
     return (
-      <div>
+      <DivS id="education">
         <h1>Education</h1>
         {this.state.entries.map((item) => (
           <Fragment key={item.id}>{item.component}</Fragment>
@@ -64,7 +65,12 @@ export default class Education extends Component {
             <i className="fa-solid fa-plus"></i>
           </button>
         )}
-      </div>
+      </DivS>
     );
   }
 }
+
+const DivS = styled.div`
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+`;

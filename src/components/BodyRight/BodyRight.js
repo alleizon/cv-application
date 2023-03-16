@@ -1,7 +1,14 @@
 import { Component } from "react";
+import Profile from "./Profile/Profile";
+import Work from "./Work/Work";
 
 export default class BodyRight extends Component {
   render() {
-    return <div id="body-right">right</div>;
+    return (
+      <>
+        <Profile />
+        <Work />
+      </>
+    );
   }
 }
