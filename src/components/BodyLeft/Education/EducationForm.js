@@ -88,8 +88,14 @@ export default class EducationForm extends Component {
             handleInput={this.handleInput}
           />
         </WrapperS>
-
-        <ButtonS>Add</ButtonS>
+        <WrapperS>
+          <ButtonS type="submit">
+            <i className="fa-solid fa-plus"></i>
+          </ButtonS>
+          <ButtonS onClick={this.props.closeForm} type="button">
+            <i className="fa-solid fa-xmark"></i>
+          </ButtonS>
+        </WrapperS>
       </FormS>
     );
   }

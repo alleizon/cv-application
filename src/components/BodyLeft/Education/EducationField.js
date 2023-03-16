@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styled from "styled-components";
 import Input from "../../Input";
 
 export default class EducationField extends Component {
@@ -45,7 +46,7 @@ export default class EducationField extends Component {
   render() {
     const entries = Object.entries(this.state);
     return (
-      <div data-field-index={this.props.index}>
+      <DivS data-field-id={this.props.index}>
         {entries.map((entry, index) => {
           const [key, obj] = entry;
           const [value, isInput] = Object.values(obj);
@@ -67,7 +68,22 @@ export default class EducationField extends Component {
             </p>
           );
         })}
-      </div>
+        <ButtonS
+          onClick={(e) => this.props.removeEntry(e.currentTarget.parentElement)}
+        >
+          <i className="fa-solid fa-xmark"></i>
+        </ButtonS>
+      </DivS>
     );
   }
 }
+
+const DivS = styled.div`
+  position: relative;
+`;
+
+const ButtonS = styled.button`
+  position: absolute;
+  right: 0;
+  top: 0;
+`;

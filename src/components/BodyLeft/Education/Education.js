@@ -11,7 +11,18 @@ export default class Education extends Component {
     };
     this.handleFormClick = this.handleFormClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeEntry = this.removeEntry.bind(this);
     this.newKey = this.getKey();
+  }
+
+  removeEntry(entryE) {
+    const id = +entryE.dataset.fieldId;
+    const target = this.state.entries.findIndex((entry) => entry.id === id);
+    const copy = [...this.state.entries];
+    copy.splice(target, 1);
+    this.setState({
+      entries: copy,
+    });
   }
 
   getKey() {
@@ -20,13 +31,16 @@ export default class Education extends Component {
   }
 
   handleFormClick() {
-    this.setState({ showForm: true });
+    this.setState({ showForm: !this.state.showForm });
   }
 
   handleSubmit(obj) {
+    const newId = this.newKey();
     const entry = {
-      id: this.newKey(),
-      component: <EducationField {...obj} />,
+      id: newId,
+      component: (
+        <EducationField removeEntry={this.removeEntry} index={newId} {...obj} />
+      ),
     };
     const copy = this.state.entries.slice();
     copy.push(entry);
@@ -42,9 +56,14 @@ export default class Education extends Component {
           <Fragment key={item.id}>{item.component}</Fragment>
         ))}
         {this.state.showForm ? (
-          <EducationForm handleSubmit={this.handleSubmit} />
+          <EducationForm
+            handleSubmit={this.handleSubmit}
+            closeForm={this.handleFormClick}
+          />
         ) : (
-          <button onClick={this.handleFormClick}>Add</button>
+          <button onClick={this.handleFormClick}>
+            <i className="fa-solid fa-plus"></i>
+          </button>
         )}
       </div>
     );
