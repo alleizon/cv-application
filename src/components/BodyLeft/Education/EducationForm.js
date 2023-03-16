@@ -114,3 +114,5 @@ const LabelS = styled.label``;
 const WrapperS = styled.div`
   display: flex;
 `;
+
+export { ButtonS };

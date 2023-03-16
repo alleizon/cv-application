@@ -48,7 +48,6 @@ export default class Education extends Component {
   }
 
   render() {
-    console.log(this.state.entries);
     return (
       <div>
         <h1>Education</h1>
