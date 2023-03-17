@@ -5,6 +5,7 @@ export default class Input extends Component {
     super(props);
     this.state = {
       text: this.props.value,
+      default: this.props.default,
     };
     this.handleInput = this.handleInput.bind(this);
   }
@@ -20,9 +21,11 @@ export default class Input extends Component {
         data-field={this.props.id}
         value={this.state.text}
         onInput={this.handleInput}
+        onBlur={(e) => {
+          this.props.handleKeyUp(e, this.state.text, this.state.default);
+        }}
         onKeyUp={(e) => {
-          if (e.key !== "Enter") return;
-          this.props.handleKeyUp(e, this.state.text);
+          this.props.handleKeyUp(e, this.state.text, this.state.default);
         }}
         autoFocus
       ></input>

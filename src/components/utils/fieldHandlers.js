@@ -1,5 +1,7 @@
 function handleKeyUp(e, text, init) {
-  if (e.key !== "Enter") return;
+  if (e.type === "keyup") {
+    if (e.key !== "Enter") return;
+  }
   this.setState({ showInput: false, value: text ? text : init });
 }
 
