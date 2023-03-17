@@ -55,6 +55,11 @@ export default class Skills extends Component {
   }
 
   handleSubmit(value) {
+    console.log(value);
+    if (!value) {
+      this.setState({ showForm: false });
+      return;
+    }
     const key = this.newKey();
     const skill = { value: value, id: key };
     this.setState({

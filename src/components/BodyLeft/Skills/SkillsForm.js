@@ -19,9 +19,7 @@ export default class SkillsForm extends Component {
   }
 
   handleBlur(e) {
-    const input = e.target;
-    const isValid = input.validity.valid;
-    this.setState({ valid: isValid });
+    this.props.handleSubmit(e.target.value);
   }
 
   handleInput(e) {
