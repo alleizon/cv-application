@@ -1,17 +1,15 @@
 import { Component, Fragment } from "react";
 import styled from "styled-components";
 import EducationField from "./EducationField";
-import EducationForm from "./EducationForm";
+import { getEducationTemplate } from "../../utils/template";
 
 export default class Education extends Component {
   constructor() {
     super();
     this.state = {
       entries: [],
-      showForm: false,
     };
-    this.handleFormClick = this.handleFormClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addEntry = this.addEntry.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
     this.newKey = this.getKey();
   }
@@ -26,16 +24,8 @@ export default class Education extends Component {
     });
   }
 
-  getKey() {
-    let id = 0;
-    return () => (id += 1);
-  }
-
-  handleFormClick() {
-    this.setState({ showForm: !this.state.showForm });
-  }
-
-  handleSubmit(obj) {
+  addEntry() {
+    const obj = getEducationTemplate();
     const newId = this.newKey();
     const entry = {
       id: newId,
@@ -43,9 +33,12 @@ export default class Education extends Component {
         <EducationField removeEntry={this.removeEntry} index={newId} {...obj} />
       ),
     };
-    const copy = this.state.entries.slice();
-    copy.push(entry);
-    this.setState({ entries: copy, showForm: false });
+    this.setState({ entries: [...this.state.entries].concat(entry) });
+  }
+
+  getKey() {
+    let id = 0;
+    return () => (id += 1);
   }
 
   render() {
@@ -55,16 +48,10 @@ export default class Education extends Component {
         {this.state.entries.map((item) => (
           <Fragment key={item.id}>{item.component}</Fragment>
         ))}
-        {this.state.showForm ? (
-          <EducationForm
-            handleSubmit={this.handleSubmit}
-            closeForm={this.handleFormClick}
-          />
-        ) : (
-          <button onClick={this.handleFormClick}>
-            <i className="fa-solid fa-plus"></i>
-          </button>
-        )}
+
+        <button onClick={this.addEntry}>
+          <i className="fa-solid fa-plus"></i>
+        </button>
       </DivS>
     );
   }

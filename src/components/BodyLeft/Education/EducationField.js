@@ -1,6 +1,6 @@
 import { Component } from "react";
 import styled from "styled-components";
-import Input from "../../Input";
+import EducationInput from "./EducationInput";
 
 export default class EducationField extends Component {
   constructor(props) {
@@ -9,65 +9,100 @@ export default class EducationField extends Component {
       title: {
         value: this.props.title,
         input: false,
+        default: this.props.title,
       },
       school: {
         value: this.props.school,
         input: false,
+        default: this.props.school,
       },
       from: {
         value: this.props.from,
         input: false,
+        default: this.props.from,
       },
       to: {
         value: this.props.to,
         input: false,
+        default: this.props.to,
       },
     };
     this.handleFieldClick = this.handleFieldClick.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
   }
 
-  handleFieldClick(key, value) {
-    const obj = { ...this.state[key] };
-    obj.input = !obj.input;
-    if (value) obj.value = value;
+  handleFieldClick(e) {
+    const key = e.target.dataset.field;
     this.setState({
-      [key]: obj,
+      [key]: {
+        value: this.state[key].value,
+        input: !this.state[key].input,
+        default: this.state[key].default,
+      },
     });
   }
 
-  handleKeyUp(e, value) {
+  handleKeyUp(e) {
+    if (e.type === "keyup") {
+      if (e.key !== "Enter") return;
+    }
     const key = e.target.dataset.field;
-    if (value === "")
-      this.setState({ [key]: { value: this.state[key].value, input: false } });
-    else this.setState({ [key]: { value: value, input: false } });
+    const obj = { ...this.state[key] };
+    obj.value = e.target.value || this.state[key].default;
+    obj.input = false;
+    this.setState({ [key]: obj });
   }
 
   render() {
-    const entries = Object.entries(this.state);
     return (
       <DivS data-field-id={this.props.index}>
-        {entries.map((entry, index) => {
-          const [key, obj] = entry;
-          const [value, isInput] = Object.values(obj);
-          return isInput ? (
-            <Input
-              id={key}
-              value={value}
-              key={index + 4}
+        {this.state.title.input ? (
+          <EducationInput
+            field="title"
+            value={this.state.title.value}
+            handleKeyUp={this.handleKeyUp}
+          />
+        ) : (
+          <span data-field="title" onClick={this.handleFieldClick}>
+            {this.state.title.value}
+          </span>
+        )}
+        {this.state.school.input ? (
+          <EducationInput
+            field="school"
+            value={this.state.school.value}
+            handleKeyUp={this.handleKeyUp}
+          />
+        ) : (
+          <span data-field="school" onClick={this.handleFieldClick}>
+            {this.state.school.value}
+          </span>
+        )}
+        <div>
+          {this.state.from.input ? (
+            <EducationInput
+              field="from"
+              value={this.state.from.value}
               handleKeyUp={this.handleKeyUp}
             />
           ) : (
-            <p
-              key={index}
-              onClick={() => {
-                this.handleFieldClick(key);
-              }}
-            >
-              {value}
-            </p>
-          );
-        })}
+            <span data-field="from" onClick={this.handleFieldClick}>
+              {this.state.from.value}
+            </span>
+          )}
+          <span> - </span>
+          {this.state.to.input ? (
+            <EducationInput
+              field="to"
+              value={this.state.to.value}
+              handleKeyUp={this.handleKeyUp}
+            />
+          ) : (
+            <span data-field="to" onClick={this.handleFieldClick}>
+              {this.state.to.value}
+            </span>
+          )}
+        </div>
         <ButtonS
           onClick={(e) => this.props.removeEntry(e.currentTarget.parentElement)}
         >
@@ -80,6 +115,9 @@ export default class EducationField extends Component {
 
 const DivS = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
 
 const ButtonS = styled.button`

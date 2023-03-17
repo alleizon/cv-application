@@ -1,4 +1,4 @@
-export default function getWorkTemplate() {
+function getWorkTemplate() {
   return {
     header: {
       position: "Enter your job position here",
@@ -14,3 +14,14 @@ export default function getWorkTemplate() {
     ],
   };
 }
+
+function getEducationTemplate() {
+  return {
+    title: "Degree Title",
+    school: "University / College",
+    from: "2012",
+    to: "2016",
+  };
+}
+
+export { getEducationTemplate, getWorkTemplate };

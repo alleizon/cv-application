@@ -1,6 +1,6 @@
 import { Component } from "react";
 import styled from "styled-components";
-import getWorkTemplate from "../../utils/template";
+import { getWorkTemplate } from "../../utils/template";
 import WorkHeader from "./WorkHeader";
 import WorkBullet from "./WorkBullet";
 

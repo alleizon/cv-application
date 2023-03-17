@@ -1,6 +1,5 @@
 import { Component } from "react";
 import styled from "styled-components";
-import { ButtonS } from "../Education/EducationForm";
 import SkillsForm from "./SkillsForm";
 import SkillsList from "./SkillsList";
 
@@ -99,3 +98,7 @@ const DivS = styled.div`
   grid-row: 4 / 5;
   grid-column: 1 / 2;
 `;
+
+const ButtonS = styled.button``;
+
+export { ButtonS };
