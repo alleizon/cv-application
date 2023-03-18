@@ -42,31 +42,27 @@ export default class InfoButton extends Component {
               </CloseButton>
             </H1>
             <Ul>
-              <li>Click on INPUT to write your CV</li>
               <li>
-                Click on <i className="fa-solid fa-circle-info"></i>
-                to open this info
-              </li>
-              <li>Click on PREVIEW to preview your CV</li>
-              <li>
-                While in input mode, click on a field to edit it, click on{" "}
+                Click on a field to edit it, click on{" "}
                 <i className="fa-solid fa-plus"></i>
-                to add entries or fields or click on{" "}
+                to add entries or fields inside a section, or click on{" "}
                 <i className="fa-solid fa-xmark"></i> to remove entries
               </li>
               <li>
-                While in input mode, click on a field and remove the text to
-                delete it
+                Click on a field (for education/skills/work experience) and
+                remove the text to delete it
+              </li>
+              <li>Click on PREVIEW to preview your CV</li>
+              <li>
+                Click on <i className="fa-solid fa-circle-info"></i>
+                to open this info
               </li>
             </Ul>
           </Modal>
         </ModalWrapper>
 
         <this.button onClick={this.showModal} className="control">
-          <i
-            style={{ fontSize: "3rem" }}
-            className="fa-solid fa-circle-info"
-          ></i>
+          <i className="fa-solid fa-circle-info"></i>
         </this.button>
       </>
     );
