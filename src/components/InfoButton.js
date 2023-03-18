@@ -9,43 +9,59 @@ export default class InfoButton extends Component {
     };
     this.button = this.props.button;
     this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  closeModal(e) {
+    if (e.target.id !== "modal-wrapper" && e.currentTarget.tagName !== "BUTTON")
+      return;
+    this.setState({ modal: false });
+    document.querySelector("#info-modal").classList.remove("active");
   }
 
   showModal() {
-    this.setState({ modal: !this.state.modal });
+    this.setState({ modal: true });
+    setTimeout(() => {
+      document.querySelector("#info-modal").classList.add("active");
+    }, 0);
   }
 
   render() {
     return (
       <>
-        {this.state.modal && (
-          <ModalWrapper onClick={this.showModal}>
-            <Modal>
-              <h1>INFO</h1>
-              <Ul>
-                <li>Click on INPUT to write your CV</li>
-                <li>
-                  Click on <i className="fa-solid fa-circle-info"></i>
-                  to open this info
-                </li>
-                <li>Click on PREVIEW to preview your CV</li>
-                <li>
-                  While in input mode, click on a field to edit it, click on{" "}
-                  <i className="fa-solid fa-plus"></i>
-                  to add entries or fields or click and{" "}
-                  <i className="fa-solid fa-xmark"></i> to remove entries
-                </li>
-                <li>
-                  While in input mode, click on a field and remove the text to
-                  delete it
-                </li>
-              </Ul>
-              <CloseButton onClick={this.showModal}>
+        <ModalWrapper
+          id="modal-wrapper"
+          $display={this.state.modal}
+          onClick={this.closeModal}
+        >
+          <Modal id="info-modal">
+            <H1>
+              INFO{" "}
+              <CloseButton onClick={this.closeModal}>
                 <i className="fa-solid fa-xmark"></i>{" "}
               </CloseButton>
-            </Modal>
-          </ModalWrapper>
-        )}
+            </H1>
+            <Ul>
+              <li>Click on INPUT to write your CV</li>
+              <li>
+                Click on <i className="fa-solid fa-circle-info"></i>
+                to open this info
+              </li>
+              <li>Click on PREVIEW to preview your CV</li>
+              <li>
+                While in input mode, click on a field to edit it, click on{" "}
+                <i className="fa-solid fa-plus"></i>
+                to add entries or fields or click on{" "}
+                <i className="fa-solid fa-xmark"></i> to remove entries
+              </li>
+              <li>
+                While in input mode, click on a field and remove the text to
+                delete it
+              </li>
+            </Ul>
+          </Modal>
+        </ModalWrapper>
+
         <this.button onClick={this.showModal} className="control">
           <i
             style={{ fontSize: "3rem" }}
@@ -59,8 +75,28 @@ export default class InfoButton extends Component {
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  width: 50px;
+  font-size: 40px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgb(0 130 135);
+  }
+`;
+
+const H1 = styled.h1`
+  padding: 20px;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 2px;
+  background-color: rgb(0 201 208);
+  border-radius: 5px 5px 0 0;
+  position: relative;
 `;
 
 const Modal = styled.div`
@@ -68,26 +104,35 @@ const Modal = styled.div`
   z-index: 100;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(240deg, #b3b3b3, #ffffff);
-  padding: 30px;
+  background-color: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 5px #0000007d;
+  box-shadow: 1px 1px 5px #00000030;
+  max-width: 500px;
+  transition: all 0.1s ease-in-out;
+  transform: translate(-50%, -50%) scale(0.5);
+
+  &.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
 `;
 
 const Ul = styled.ul`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
   gap: 10px;
-  margin-left: 20px;
+  padding: 30px 30px 30px 50px;
   list-style: disc;
+
+  i {
+    margin: 0px 5px;
+  }
 `;
 
 const ModalWrapper = styled.div`
   position: fixed;
   height: 100vh;
   width: 100vw;
-  z-index: 99;
+  z-index: 50;
   background-color: #0000004d;
+  ${({ $display }) => ($display ? "display:block" : "display:none")}
 `;
