@@ -29,4 +29,41 @@ const HeaderS = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+
+  p {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  input {
+    width: 60%;
+    font-size: 2.5rem;
+    border-radius: 30px;
+    text-align: center;
+    background-color: var(--gray-color);
+    outline: none;
+    border: 0px solid black;
+  }
+
+  input[data-field="title"] {
+    font-size: 1.5rem;
+    width: 40%;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 85%;
+    bottom: 0;
+    background-color: var(--gray-color);
+    height: 2px;
+  }
 `;

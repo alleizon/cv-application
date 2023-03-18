@@ -19,7 +19,9 @@ export default class App extends Component {
   handlePreview() {
     const buttons = [...document.querySelectorAll("button:not(.control)")];
     buttons.forEach((button) => {
-      button.classList.add("hide");
+      if (this.state.preview) {
+        button.classList.remove("hide");
+      } else button.classList.add("hide");
     });
     this.setState({ preview: !this.state.preview });
   }
@@ -52,7 +54,8 @@ const AppS = styled.div`
   display: grid;
   height: 100vh;
   grid-template-rows: 20% repeat(3, minmax(max-content, 1fr));
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 20px 10px;
 
   ${({ $display }) => ($display ? "margin-top: 0px" : "margin-top: 100px")}
 `;

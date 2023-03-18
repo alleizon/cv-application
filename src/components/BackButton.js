@@ -25,6 +25,7 @@ const BackButtonS = styled.button`
   border: 0px solid transparent;
   background-color: transparent;
   transition: all 0.2s ease-in-out;
+  z-index: 40;
 
   &:hover {
     scale: 1.2;

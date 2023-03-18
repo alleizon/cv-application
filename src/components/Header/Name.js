@@ -16,6 +16,7 @@ export default class Name extends Component {
   render() {
     return this.state.showInput ? (
       <Input
+        id="name"
         value={this.state.value}
         default="Your name here"
         handleKeyUp={this.handleKeyUp}

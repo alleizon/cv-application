@@ -16,6 +16,7 @@ export default class Title extends Component {
   render() {
     return this.state.showInput ? (
       <Input
+        id="title"
         value={this.state.value}
         default="Your title here"
         handleKeyUp={this.handleKeyUp}
