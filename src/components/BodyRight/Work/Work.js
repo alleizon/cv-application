@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import styled from "styled-components";
 import WorkTemplate from "./WorkTemplate";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class Work extends Component {
   constructor() {
@@ -62,5 +63,3 @@ const DivS = styled.div`
   grid-row: 3 / 5;
   grid-column: 2 / 3;
 `;
-
-const ButtonS = styled.button``;

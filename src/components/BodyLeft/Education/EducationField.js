@@ -1,6 +1,7 @@
 import { Component } from "react";
 import styled from "styled-components";
 import EducationInput from "./EducationInput";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class EducationField extends Component {
   constructor(props) {
@@ -103,11 +104,11 @@ export default class EducationField extends Component {
             </span>
           )}
         </div>
-        <ButtonS
+        <AbsButton
           onClick={(e) => this.props.removeEntry(e.currentTarget.parentElement)}
         >
           <i className="fa-solid fa-xmark"></i>
-        </ButtonS>
+        </AbsButton>
       </DivS>
     );
   }
@@ -120,8 +121,8 @@ const DivS = styled.div`
   gap: 5px;
 `;
 
-const ButtonS = styled.button`
+const AbsButton = styled(ButtonS)`
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
 `;

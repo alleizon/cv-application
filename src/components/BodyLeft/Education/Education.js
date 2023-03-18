@@ -2,6 +2,7 @@ import { Component, Fragment } from "react";
 import styled from "styled-components";
 import EducationField from "./EducationField";
 import { getEducationTemplate } from "../../utils/template";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class Education extends Component {
   constructor() {
@@ -49,9 +50,9 @@ export default class Education extends Component {
           <Fragment key={item.id}>{item.component}</Fragment>
         ))}
 
-        <button onClick={this.addEntry}>
+        <ButtonS onClick={this.addEntry}>
           <i className="fa-solid fa-plus"></i>
-        </button>
+        </ButtonS>
       </DivS>
     );
   }

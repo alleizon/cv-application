@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getWorkTemplate } from "../../utils/template";
 import WorkHeader from "./WorkHeader";
 import WorkBullet from "./WorkBullet";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class WorkTemplate extends Component {
   constructor(props) {
@@ -134,9 +135,7 @@ const DivS = styled.div`
   position: relative;
 `;
 
-const ButtonS = styled.button``;
-
-const CloseBtn = styled.button`
+const CloseBtn = styled(ButtonS)`
   position: absolute;
   top: 0;
   right: 0;

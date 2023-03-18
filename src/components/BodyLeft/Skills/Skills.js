@@ -2,6 +2,7 @@ import { Component } from "react";
 import styled from "styled-components";
 import SkillsForm from "./SkillsForm";
 import SkillsList from "./SkillsList";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class Skills extends Component {
   constructor() {
@@ -102,7 +103,3 @@ const DivS = styled.div`
   grid-row: 4 / 5;
   grid-column: 1 / 2;
 `;
-
-const ButtonS = styled.button``;
-
-export { ButtonS };

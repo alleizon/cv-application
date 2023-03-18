@@ -1,6 +1,7 @@
 import { Component } from "react";
 import styled from "styled-components";
 import getLoremIpsum from "../../utils/lorem";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class Profile extends Component {
   constructor() {
@@ -41,9 +42,9 @@ export default class Profile extends Component {
               onInput={this.handleInput}
               value={this.state.value}
             ></TextareaS>
-            <ButtonS onClick={this.handleClick}>
+            <AbsButton onClick={this.handleClick}>
               <i className="fa-solid fa-check"></i>
-            </ButtonS>
+            </AbsButton>
           </>
         ) : (
           <p onClick={this.handleClick}>{this.state.value}</p>
@@ -66,7 +67,7 @@ const TextareaS = styled.textarea`
   resize: none;
 `;
 
-const ButtonS = styled.button`
+const AbsButton = styled(ButtonS)`
   position: absolute;
   right: 100%;
   top: 42%;

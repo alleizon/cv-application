@@ -1,6 +1,6 @@
 import { Component } from "react";
 import styled from "styled-components";
-import { ButtonS } from "./Skills";
+import { ButtonS } from "../../utils/styleComponents";
 
 export default class SkillsForm extends Component {
   constructor() {
