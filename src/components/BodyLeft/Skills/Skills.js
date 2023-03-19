@@ -1,6 +1,5 @@
 import { Component } from "react";
 import styled from "styled-components";
-import SkillsForm from "./SkillsForm";
 import SkillsList from "./SkillsList";
 import { ButtonS } from "../../utils/styleComponents";
 
@@ -11,10 +10,9 @@ export default class Skills extends Component {
       skills: [],
       showForm: false,
     };
-    this.toggleForm = this.toggleForm.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.removeSkill = this.removeSkill.bind(this);
     this.editSkill = this.editSkill.bind(this);
+    this.addField = this.addField.bind(this);
     this.newKey = this.initKey();
   }
 
@@ -28,6 +26,15 @@ export default class Skills extends Component {
     this.setState({
       skills: copy,
     });
+  }
+
+  addField() {
+    const skill = {
+      value: "Click to edit",
+      id: this.newKey(),
+    };
+
+    this.setState({ skills: [...this.state.skills].concat(skill) });
   }
 
   editSkill(e) {
@@ -49,30 +56,11 @@ export default class Skills extends Component {
     return () => (id += 1);
   }
 
-  toggleForm() {
-    this.setState({
-      showForm: !this.state.showForm,
-    });
-  }
-
-  handleSubmit(value) {
-    if (!value) {
-      this.setState({ showForm: false });
-      return;
-    }
-    const key = this.newKey();
-    const skill = { value: value, id: key };
-    this.setState({
-      skills: [...this.state.skills].concat(skill),
-      showForm: false,
-    });
-  }
-
   render() {
     return (
       <DivS id="skills">
         <h1>Skills</h1>
-        <ul>
+        <UlS>
           {this.state.skills.map((skill) => (
             <SkillsList
               key={skill.id}
@@ -82,18 +70,11 @@ export default class Skills extends Component {
               id={skill.id}
             />
           ))}
-        </ul>
+        </UlS>
 
-        {this.state.showForm ? (
-          <SkillsForm
-            toggleForm={this.toggleForm}
-            handleSubmit={this.handleSubmit}
-          />
-        ) : (
-          <ButtonS onClick={this.toggleForm}>
-            <i className="fa-solid fa-plus"></i>
-          </ButtonS>
-        )}
+        <ButtonS onClick={this.addField}>
+          <i className="fa-solid fa-plus"></i>
+        </ButtonS>
       </DivS>
     );
   }
@@ -102,4 +83,10 @@ export default class Skills extends Component {
 const DivS = styled.div`
   grid-row: 4 / 5;
   grid-column: 1 / 2;
+`;
+
+const UlS = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
