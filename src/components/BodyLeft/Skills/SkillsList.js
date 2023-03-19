@@ -27,6 +27,7 @@ export default class SkillsList extends Component {
   }
 
   handleClick() {
+    if (!document.querySelector("#control-buttons")) return;
     this.setState({ showInput: true });
   }
 

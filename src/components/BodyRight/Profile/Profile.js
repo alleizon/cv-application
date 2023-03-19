@@ -27,6 +27,7 @@ export default class Profile extends Component {
   }
 
   handleClick() {
+    if (!document.querySelector("#control-buttons")) return;
     this.setState({ showInput: !this.state.showInput });
   }
 

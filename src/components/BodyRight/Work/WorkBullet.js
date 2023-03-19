@@ -27,6 +27,7 @@ export default class WorkBullet extends Component {
   }
 
   handleClick() {
+    if (!document.querySelector("#control-buttons")) return;
     this.setState({ input: !this.state.input });
   }
 

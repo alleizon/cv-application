@@ -60,6 +60,7 @@ const AppS = styled.div`
   height: 100vh;
   max-width: 1400px;
   margin: auto;
+  margin-bottom: 100px;
   grid-template-rows: 20% repeat(3, minmax(max-content, 1fr));
   grid-template-columns: 1fr 1.5fr;
   gap: 20px 10px;

@@ -29,6 +29,7 @@ export default class WorkHeader extends Component {
   }
 
   handleClick() {
+    if (!document.querySelector("#control-buttons")) return;
     this.setState({ input: true });
   }
 

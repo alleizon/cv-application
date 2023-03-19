@@ -6,6 +6,7 @@ function handleKeyUp(e, text, init) {
 }
 
 function handleClick() {
+  if (!document.querySelector("#control-buttons")) return;
   this.setState({
     showInput: true,
   });

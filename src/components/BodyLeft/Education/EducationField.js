@@ -33,6 +33,7 @@ export default class EducationField extends Component {
   }
 
   handleFieldClick(e) {
+    if (!document.querySelector("#control-buttons")) return;
     const key = e.target.dataset.field;
     this.setState({
       [key]: {

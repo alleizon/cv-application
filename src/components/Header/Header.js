@@ -61,7 +61,7 @@ const HeaderS = styled.div`
   &::after {
     position: absolute;
     content: "";
-    width: 85%;
+    width: 90%;
     bottom: 0;
     background-color: var(--gray-color);
     height: 2px;
