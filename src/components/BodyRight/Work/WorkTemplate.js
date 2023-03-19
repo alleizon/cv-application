@@ -82,26 +82,29 @@ export default class WorkTemplate extends Component {
           isSpan={false}
           value={this.state.header.position}
         />
-        <WorkHeader
-          type="company"
-          isSpan={true}
-          value={this.state.header.company}
-        />
-        <span> / </span>
-        <WorkHeader
-          type="location"
-          isSpan={true}
-          value={this.state.header.location}
-        />
-        <span> / </span>
-        <WorkHeader
-          type="start"
-          isSpan={true}
-          value={this.state.header.start}
-        />
-        <span> - </span>
-        <WorkHeader type="end" isSpan={true} value={this.state.header.end} />
-        <ul>
+        <div>
+          <WorkHeader
+            type="company"
+            isSpan={true}
+            value={this.state.header.company}
+          />
+          <span> / </span>
+          <WorkHeader
+            type="location"
+            isSpan={true}
+            value={this.state.header.location}
+          />
+          <span> / </span>
+          <WorkHeader
+            type="start"
+            isSpan={true}
+            value={this.state.header.start}
+          />
+          <span> - </span>
+          <WorkHeader type="end" isSpan={true} value={this.state.header.end} />
+        </div>
+
+        <UlS>
           {this.state.bullets.map((bullet) => (
             <WorkBullet
               value={bullet.info}
@@ -123,7 +126,7 @@ export default class WorkTemplate extends Component {
               <i className="fa-solid fa-ellipsis-vertical"></i>
             </ButtonS>
           )}
-        </ul>
+        </UlS>
         <CloseBtn onClick={this.props.removeEntry}>
           <i className="fa-solid fa-xmark"></i>
         </CloseBtn>
@@ -134,12 +137,54 @@ export default class WorkTemplate extends Component {
 
 const DivS = styled.div`
   position: relative;
+  padding: 20px;
+  padding-right: 60px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > div {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &:hover {
+    background-color: var(--entry-hover);
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 1rem;
+    min-height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const CloseBtn = styled(ButtonS)`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 20px;
 `;
 
-const InputS = styled.input``;
+const UlS = styled.ul`
+  margin-left: 20px;
+  list-style: disc;
+  font-size: 0.9rem;
+  color: var(--text-gray);
+`;
+
+const InputS = styled.input`
+  width: 50%;
+  background-color: var(--gray-color);
+  padding: 5px;
+  border: 1px solid black;
+  outline: none;
+`;

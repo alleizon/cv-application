@@ -28,4 +28,9 @@ export default class EducationInput extends Component {
   }
 }
 
-const InputS = styled.input``;
+const InputS = styled.input`
+  padding: 5px;
+  background-color: var(--gray-color);
+  border: 1px solid black;
+  outline: none;
+`;

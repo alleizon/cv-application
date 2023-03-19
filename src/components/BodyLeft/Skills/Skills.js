@@ -89,4 +89,6 @@ const UlS = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  list-style: disc;
+  margin-left: 25px;
 `;

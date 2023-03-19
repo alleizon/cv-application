@@ -12,6 +12,7 @@ export default class Contact extends Component {
   render() {
     return (
       <ContactS id="contact">
+        <h1>Contact</h1>
         <Field {...this.state.address} />
         <Field {...this.state.phone} />
         <Field {...this.state.email} />

@@ -34,13 +34,19 @@ const HeaderS = styled.div`
   h1 {
     font-size: 2.5rem !important;
     text-transform: uppercase;
+    padding: 3px 15px;
     letter-spacing: 5px;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 25px;
   }
 
   p {
     font-size: 1.5rem !important;
     text-transform: uppercase;
+    padding: 3px 15px;
     letter-spacing: 3px;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 25px;
   }
 
   input {

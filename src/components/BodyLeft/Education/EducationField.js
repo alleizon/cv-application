@@ -65,9 +65,9 @@ export default class EducationField extends Component {
             handleKeyUp={this.handleKeyUp}
           />
         ) : (
-          <span data-field="title" onClick={this.handleFieldClick}>
+          <SpanS data-field="title" onClick={this.handleFieldClick}>
             {this.state.title.value}
-          </span>
+          </SpanS>
         )}
         {this.state.school.input ? (
           <EducationInput
@@ -76,9 +76,9 @@ export default class EducationField extends Component {
             handleKeyUp={this.handleKeyUp}
           />
         ) : (
-          <span data-field="school" onClick={this.handleFieldClick}>
+          <SpanS data-field="school" onClick={this.handleFieldClick}>
             {this.state.school.value}
-          </span>
+          </SpanS>
         )}
         <div>
           {this.state.from.input ? (
@@ -88,11 +88,11 @@ export default class EducationField extends Component {
               handleKeyUp={this.handleKeyUp}
             />
           ) : (
-            <span data-field="from" onClick={this.handleFieldClick}>
+            <SpanS data-field="from" onClick={this.handleFieldClick}>
               {this.state.from.value}
-            </span>
+            </SpanS>
           )}
-          <span> - </span>
+          <SpanS> - </SpanS>
           {this.state.to.input ? (
             <EducationInput
               field="to"
@@ -100,9 +100,9 @@ export default class EducationField extends Component {
               handleKeyUp={this.handleKeyUp}
             />
           ) : (
-            <span data-field="to" onClick={this.handleFieldClick}>
+            <SpanS data-field="to" onClick={this.handleFieldClick}>
               {this.state.to.value}
-            </span>
+            </SpanS>
           )}
         </div>
         <AbsButton
@@ -120,10 +120,46 @@ const DivS = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+  padding: 10px;
+  padding-right: 35px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: var(--entry-hover);
+  }
+
+  & > div {
+    display: flex;
+    gap: 10px;
+    height: 30px;
+    align-items: center;
+  }
+
+  & > div > input {
+    max-width: 50px;
+  }
 `;
 
 const AbsButton = styled(ButtonS)`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+`;
+
+const SpanS = styled.span`
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+
+  &[data-field="title"] {
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: black;
+  }
 `;

@@ -54,13 +54,20 @@ export default class SkillsList extends Component {
 
 const LiS = styled.li`
   position: relative;
-  padding: 0 5px;
+  padding: 5px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  height: 30px;
+
+  &:hover {
+    background-color: var(--gray-color);
+  }
 `;
 
 const ButtonAbsS = styled.button`
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 5px;
+  top: 5px;
   width: 20px;
   height: 20px;
   display: flex;
@@ -75,6 +82,18 @@ const ButtonAbsS = styled.button`
   &:hover {
     background-color: var(--gray-color);
   }
+
+  i {
+    padding-top: 2px;
+  }
 `;
 
-const InputS = styled.input``;
+const InputS = styled.input`
+  max-width: fit-content;
+  height: 30px;
+  padding: 5px;
+  font-size: 1rem;
+  background-color: var(--gray-color);
+  outline: none;
+  border: 1px solid black;
+`;

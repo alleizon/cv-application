@@ -49,6 +49,30 @@ export default class WorkBullet extends Component {
   }
 }
 
-const LiS = styled.li``;
+const LiS = styled.li`
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  position: relative;
 
-const InputS = styled.input``;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--text-gray);
+  }
+`;
+
+const InputS = styled.input`
+  background-color: var(--gray-color);
+  border: 1px solid black;
+  outline: none;
+  width: 65%;
+  height: 30px;
+  padding: 5px;
+`;

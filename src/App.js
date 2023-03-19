@@ -65,7 +65,7 @@ const AppS = styled.div`
   grid-template-columns: 1fr 1.5fr;
   gap: 20px 10px;
 
-  & > div:not(#control-buttons) {
+  & > div {
     padding: 20px 15%;
     display: flex;
     flex-direction: column;
@@ -77,6 +77,9 @@ const AppS = styled.div`
     font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 3px;
+  }
+  & > div:not(#header) > h1 {
+    margin-bottom: 2rem;
   }
 `;
 

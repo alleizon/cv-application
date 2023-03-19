@@ -59,17 +59,28 @@ const DivS = styled.div`
   grid-row: 2 / 3;
   grid-column: 2 / 3;
   position: relative;
+  p {
+    word-spacing: 6px;
+  }
 `;
 
 const TextareaS = styled.textarea`
+  position: relative;
   width: 95%;
   height: 85%;
   padding: 0;
   resize: none;
+  font-family: Roboto;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: var(--entry-hover);
+  outline: none;
 `;
 
 const AbsButton = styled(ButtonS)`
   position: absolute;
-  right: 100%;
-  top: 42%;
+  transform: translateX(50%);
+  right: 50%;
+  bottom: -7px;
 `;
