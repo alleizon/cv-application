@@ -55,11 +55,15 @@ export default class App extends Component {
 }
 
 const AppS = styled.div`
+  margin: 20px 15%;
+  box-shadow: 1px 1px 5px #0000004a;
+  border: 1px solid gray;
+  overflow-y: scroll;
+
   position: relative;
   display: grid;
   height: 100vh;
   max-width: 1400px;
-  margin: auto;
   margin-bottom: 100px;
   grid-template-rows: 20% repeat(3, minmax(max-content, 1fr));
   grid-template-columns: 1fr 1.5fr;
