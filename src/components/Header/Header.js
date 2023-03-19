@@ -38,6 +38,10 @@ const HeaderS = styled.div`
     letter-spacing: 5px;
     transition: background-color 0.2s ease-in-out;
     border-radius: 25px;
+
+    @media (max-width: 862px) {
+      font-size: 2rem !important;
+    }
   }
 
   p {
