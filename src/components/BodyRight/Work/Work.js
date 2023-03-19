@@ -60,6 +60,17 @@ export default class Work extends Component {
 }
 
 const DivS = styled.div`
+  position: relative;
   grid-row: 3 / 5;
   grid-column: 2 / 3;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    top: 20px;
+    left: -11px;
+    height: calc(100% - 20px);
+    background-color: var(--gray-color);
+  }
 `;

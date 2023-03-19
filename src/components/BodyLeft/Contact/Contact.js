@@ -23,9 +23,20 @@ export default class Contact extends Component {
 }
 
 const ContactS = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   grid-row: 2 / 3;
   grid-column: 1 / 2;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(65px + 2rem);
+    right: 0;
+    width: 2px;
+    height: calc(100% - 65px - 2rem);
+    background-color: var(--gray-color);
+  }
 `;
