@@ -32,13 +32,13 @@ const HeaderS = styled.div`
   position: relative;
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
     text-transform: uppercase;
     letter-spacing: 5px;
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     text-transform: uppercase;
     letter-spacing: 3px;
   }

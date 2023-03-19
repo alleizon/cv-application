@@ -16,16 +16,21 @@ export default class BackButton extends Component {
 }
 
 const BackButtonS = styled.button`
-  top: calc(100% + 20px);
-  right: 20px;
+  top: 40px;
+  right: 100px;
   position: absolute;
   width: 30px;
   height: 30px;
-  border-radius: 10px;
-  border: 0px solid transparent;
+  border-radius: 5px;
+  border: 2px solid black;
   background-color: transparent;
   transition: all 0.2s ease-in-out;
   z-index: 40;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     scale: 1.2;

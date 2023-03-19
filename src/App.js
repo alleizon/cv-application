@@ -28,23 +28,28 @@ export default class App extends Component {
 
   render() {
     return (
-      <AppS $display={this.state.preview}>
-        <ButtonContainer>
-          <InfoButton button={ViewButton} />
-          <PreviewButton
-            handlePreview={this.handlePreview}
-            button={ViewButton}
-          />
+      <>
+        {this.state.preview ? (
           <BackButton
             handlePreview={this.handlePreview}
             preview={this.state.preview}
           />
-        </ButtonContainer>
+        ) : (
+          <ButtonContainer $preview={this.state.preview} id="control-buttons">
+            <InfoButton button={ViewButton} />
+            <PreviewButton
+              handlePreview={this.handlePreview}
+              button={ViewButton}
+            />
+          </ButtonContainer>
+        )}
 
-        <Header />
-        <BodyLeft />
-        <BodyRight />
-      </AppS>
+        <AppS>
+          <Header />
+          <BodyLeft />
+          <BodyRight />
+        </AppS>
+      </>
     );
   }
 }
@@ -53,11 +58,25 @@ const AppS = styled.div`
   position: relative;
   display: grid;
   height: 100vh;
+  max-width: 1400px;
+  margin: auto;
   grid-template-rows: 20% repeat(3, minmax(max-content, 1fr));
   grid-template-columns: 1fr 1.5fr;
   gap: 20px 10px;
 
-  ${({ $display }) => ($display ? "margin-top: 0px" : "margin-top: 100px")}
+  & > div:not(#control-buttons) {
+    padding: 20px 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  & > div > h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
 `;
 
 const ViewButton = styled.button`
@@ -76,14 +95,12 @@ const ViewButton = styled.button`
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 100%;
   height: 100px;
-  width: 100%;
-  display: flex;
   border-bottom: 2px solid black;
   background-color: black;
   gap: 2px;
+
+  ${({ $preview }) => ($preview ? "display: none" : "display: flex")}
 `;
 
 console.clear();
