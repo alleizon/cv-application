@@ -2,9 +2,11 @@
 
 :root {
   font-size: 16px;
-  font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
   box-sizing: border-box;
-  --gray-color: #88888873; 
+  --gray-color: #88888873;
   --text-gray: #383838;
   --field-hover: #80808078;
   --entry-hover: #80808038;
@@ -15,5 +17,10 @@ html * {
 }
 
 button.hide {
-  display:none;
+  display: none;
+}
+
+#root {
+  background-color: #80808024;
+  padding-bottom: 100px;
 }

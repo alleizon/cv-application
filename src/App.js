@@ -43,12 +43,13 @@ export default class App extends Component {
             />
           </ButtonContainer>
         )}
-
-        <AppS>
-          <Header />
-          <BodyLeft />
-          <BodyRight />
-        </AppS>
+        <Wrapper>
+          <AppS>
+            <Header />
+            <BodyLeft />
+            <BodyRight />
+          </AppS>
+        </Wrapper>
       </>
     );
   }
@@ -59,12 +60,11 @@ const AppS = styled.div`
   box-shadow: 1px 1px 5px #0000004a;
   border: 1px solid gray;
   overflow-y: scroll;
-
+  background-color: #e5feff;
   position: relative;
   display: grid;
   height: 100vh;
   max-width: 1400px;
-  margin-bottom: 100px;
   grid-template-rows: 20% repeat(3, minmax(max-content, 1fr));
   grid-template-columns: 1fr 1.5fr;
   gap: 20px 10px;
@@ -109,6 +109,10 @@ const ButtonContainer = styled.div`
   gap: 2px;
 
   ${({ $preview }) => ($preview ? "display: none" : "display: flex")}
+`;
+
+const Wrapper = styled.div`
+  padding-top: 20px;
 `;
 
 console.clear();
