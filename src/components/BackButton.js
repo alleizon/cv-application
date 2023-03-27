@@ -40,8 +40,5 @@ const BackButtonS = styled.button`
     font-size: 1.2rem;
   }
 
-  ${({ $display }) => {
-    console.log($display);
-    return $display ? "display: block" : "display: none";
-  }}
+  ${({ $display }) => ($display ? "display: block" : "display: none")}
 `;

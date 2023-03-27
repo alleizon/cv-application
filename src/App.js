@@ -115,4 +115,4 @@ const Wrapper = styled.div`
   padding-top: 20px;
 `;
 
-console.clear();
+// console.clear();

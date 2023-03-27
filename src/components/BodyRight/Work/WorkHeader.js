@@ -4,7 +4,6 @@ import styled from "styled-components";
 export default class WorkHeader extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       value: this.props.value,
       input: false,
